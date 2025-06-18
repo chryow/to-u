@@ -1,0 +1,242 @@
+/* Reset & Base */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Scroll & Snap */
+.slides {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* Section Base */
+section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  scroll-snap-align: start;
+  background-size: cover;
+  background-position: center;
+  transition: background 1s ease-in-out;
+}
+
+/* Music Widget */
+.music-widget {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.65);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  backdrop-filter: blur(6px);
+  z-index: 10;
+  max-width: 300px;
+  gap: 12px;
+}
+.cover-art {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.track-info {
+  flex: 1;
+}
+.track-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.track-artist {
+  font-size: 0.85rem;
+  color: #ccc;
+  margin-top: 4px;
+}
+.play-button {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.play-button:hover {
+  background-color: #1ed760;
+}
+
+/* Intro/Outro Slide */
+.intro-slide {
+  background: linear-gradient(135deg, #d73c4d, #8c193e);
+  color: white;
+  text-align: center;
+}
+.outro {
+  background: linear-gradient(135deg, #5e1133, #af3a63);
+}
+.intro-text {
+  font-size: 2.5em;
+  z-index: 2;
+}
+
+.floating-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.floating-shapes .heart {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: pink;
+  transform: rotate(45deg);
+  animation: float 8s infinite ease-in-out;
+  opacity: 0.8;
+}
+
+.floating-shapes .heart::before,
+.floating-shapes .heart::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: pink;
+  border-radius: 50%;
+}
+
+.floating-shapes .heart::before {
+  top: -20px;
+  left: 0;
+}
+
+.floating-shapes .heart::after {
+  top: 0;
+  left: -20px;
+}
+
+/* More hearts with different delays and positions */
+.heart:nth-child(1) {
+  top: 50%;
+  left: 50%;
+  animation-delay: 0s;
+}
+.heart:nth-child(2) {
+  top: 30%;
+  left: 70%;
+  animation-delay: 2s;
+}
+.heart:nth-child(3) {
+  top: 70%;
+  left: 30%;
+  animation-delay: 4s;
+}
+.heart:nth-child(4) {
+  top: 20%;
+  left: 20%;
+  animation-delay: 1s;
+}
+.heart:nth-child(5) {
+  top: 80%;
+  left: 80%;
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-150px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Aquarium Slide */
+.aquarium {
+  background: linear-gradient(#021c29, #043f61);
+  color: white;
+  overflow: hidden;
+}
+.floating-fish .fish {
+  width: 40px;
+  height: 20px;
+  background: orange;
+  position: absolute;
+  top: 60%;
+  left: -50px;
+  border-radius: 10px;
+  animation: swim 12s linear infinite;
+}
+.floating-fish .fish.delay {
+  top: 30%;
+  animation-delay: 5s;
+}
+@keyframes swim {
+  from { transform: translateX(0); }
+  to { transform: translateX(110vw); }
+}
+
+/* Warm Slide */
+.warm {
+  background: linear-gradient(to right, #ffd1ba, #f7b2c0);
+  color: #3b2c35;
+}
+
+/* Sunset Slide */
+.sunset {
+  background: linear-gradient(to bottom right, #ffc3a0, #ffafbd, #a2d2ff);
+  color: white;
+}
+
+/* Shared Slide Content */
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+}
+.image-left {
+  flex-direction: row;
+}
+.image-right {
+  flex-direction: row-reverse;
+}
+img {
+  max-height: 70vh;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+.caption {
+  font-size: 1.8em;
+  max-width: 400px;
+  line-height: 1.4;
+}
